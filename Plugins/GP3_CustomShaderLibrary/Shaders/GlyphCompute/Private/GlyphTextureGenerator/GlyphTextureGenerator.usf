@@ -1,0 +1,21 @@
+#include "/Engine/Public/Platform.ush"
+
+RWTexture2D<float4> RenderTarget;
+//red is the drawing itself, green will be used for a procedural drawing animation, blue is left for future improvement like selective emissives, alpha is used on input texture to cull the background
+Texture2D InputTexture; 
+uint2 offset;
+uint2 mask;
+
+[numthreads(THREADS_X, THREADS_Y, THREADS_Z)]
+void GlyphTextureGenerator(
+	uint3 DispatchThreadId : SV_DispatchThreadID,
+	uint GroupIndex : SV_GroupIndex )
+{
+	float4 outputValue = RenderTarget[DispatchThreadId.xy + offset];
+	float4 inputValue = InputTexture[DispatchThreadId.xy];
+	outputValue = float4(inputValue.r > 0.5f && inputValue.a > 0.2f ? inputValue.r : outputValue.r,
+		inputValue.a < 0.8f ? min(float2((float)mask.x/255.0f,(float)mask.y/255.0f),float2(0.0f,1.0f/255.0f)) : float2((float)mask.x/255.0f,(float)mask.y/255.0f),
+		inputValue.a > 0.5 && (inputValue.r > 0.5f || outputValue.a > 0.5f) ? inputValue.a : outputValue.a);
+		
+	RenderTarget[DispatchThreadId.xy + offset] = outputValue;
+}

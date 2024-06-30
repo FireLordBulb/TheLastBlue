@@ -1,0 +1,14 @@
+#include "/Engine/Public/Platform.ush"
+
+Texture2D InputTexture; 
+RWTexture2D<float4> RenderTarget;
+//red is the drawing itself, green will be used for a procedural drawing animation, blue is left for future improvement like selective emissives, alpha is used on input texture to cull the background
+
+[numthreads(32, 32, 1)]
+void BlitToTarget(
+	uint3 DispatchThreadId : SV_DispatchThreadID,
+	uint GroupIndex : SV_GroupIndex )
+{
+	//compile trigger
+	RenderTarget[DispatchThreadId.xy] = InputTexture[DispatchThreadId.xy];
+}
