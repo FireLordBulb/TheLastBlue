@@ -2,9 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "AIController.h"
-#include "PlainSentence.h"
 #include "SpiritAIStateManager.h"
-#include "SubGlyph.h"
 #include "SpiritAIController.generated.h"
 
 class UInteraction;

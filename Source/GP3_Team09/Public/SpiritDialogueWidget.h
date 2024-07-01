@@ -1,7 +1,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "SubGlyph.h"
 #include "Blueprint/UserWidget.h"
 #include "SpiritDialogueWidget.generated.h"
 
