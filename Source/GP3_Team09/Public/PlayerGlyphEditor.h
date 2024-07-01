@@ -6,7 +6,7 @@
 #include "Components/ActorComponent.h"
 #include "PlayerGlyphEditor.generated.h"
 
-class IIClickReciever;
+class IIClickReceiver;
 
 UCLASS(Blueprintable, meta=(BlueprintSpawnableComponent))
 class GP3_TEAM09_API UPlayerGlyphEditor : public UActorComponent
@@ -22,7 +22,7 @@ protected:
 	virtual void BeginPlay() override;
 public:
 	UPROPERTY(BlueprintReadWrite)
-	TScriptInterface<IIClickReciever> Glyph;
+	TScriptInterface<IIClickReceiver> Glyph;
 	UPROPERTY(BlueprintReadWrite)
 	bool bGlyphEditingIsActive;
 };

@@ -3,11 +3,11 @@
 #pragma once
 
 #include "UObject/Interface.h"
-#include "IClickReciever.generated.h"
+#include "IClickReceiver.generated.h"
 
 // This class does not need to be modified.
 UINTERFACE(Blueprintable, MinimalAPI)
-class UIClickReciever : public UInterface
+class UIClickReceiver : public UInterface
 {
 	GENERATED_BODY()
 };
@@ -15,7 +15,7 @@ class UIClickReciever : public UInterface
 /**
  * 
  */
-class GP3_TEAM09_API IIClickReciever
+class GP3_TEAM09_API IIClickReceiver
 {
 	GENERATED_BODY()
 
