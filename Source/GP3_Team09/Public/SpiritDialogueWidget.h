@@ -7,8 +7,6 @@
 
 class UInteraction;
 class UImage;
-class AGlyph;
-class USubGlyph;
 
 UCLASS()
 class USpiritDialogueWidget : public UUserWidget

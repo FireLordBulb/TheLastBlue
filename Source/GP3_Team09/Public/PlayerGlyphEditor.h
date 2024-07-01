@@ -7,7 +7,6 @@
 #include "PlayerGlyphEditor.generated.h"
 
 class IIClickReciever;
-class AGlyph;
 
 UCLASS(Blueprintable, meta=(BlueprintSpawnableComponent))
 class GP3_TEAM09_API UPlayerGlyphEditor : public UActorComponent
