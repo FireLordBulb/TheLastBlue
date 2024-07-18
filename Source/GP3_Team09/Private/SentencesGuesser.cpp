@@ -1,22 +1,19 @@
 ﻿#include "SentencesGuesser.h"
 
-void FUGuesses::FindKey(FString Key)
+bool USentencesGuesser::IsCorrectGuess(FString Key, FString Guess)
 {
-	for (FString Guess : Guesses)
+	if (AvailableGuesses.Contains(Key) && Key.Equals(Guess, ESearchCase::IgnoreCase))
 	{
-		if (Guess.Equals(Key, ESearchCase::IgnoreCase))
-		{
-			CorrectGuess = Key;
-			return;
-		}
+		return true;
 	}
-	UE_LOG(LogTemp, Error, TEXT("ERROR in SentenceGuesser on key \"%s\" no guess matches the key"), *Key);
+	return false;
 }
 
-void USentencesGuesser::BeginPlay()
+void USentencesGuesser::CheckKeys()
 {
 	for (auto Word : AvailableGuesses)
 	{
-		Word.Value.FindKey(Word.Key);
+		if(!Word.Value.Guesses.Contains(Word.Key))
+			UE_LOG(LogTemp, Error, TEXT("ERROR in SentenceGuesser on key \"%s\" no guess matches the key"), *Word.Key);
 	}
 }

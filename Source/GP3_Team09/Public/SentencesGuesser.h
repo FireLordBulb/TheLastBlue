@@ -14,11 +14,6 @@ struct FUGuesses
 		
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	TArray<FString> Guesses;
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	FString CorrectGuess;
-	
-	void FindKey(FString Key);
 };
 
 UCLASS()
@@ -31,5 +26,8 @@ class GP3_TEAM09_API USentencesGuesser : public UPrimaryDataAsset
 		TMap<FString, FUGuesses> AvailableGuesses;
 
 		UFUNCTION(BlueprintCallable)
-		void BeginPlay();
+		bool IsCorrectGuess(FString Key, FString Guess);
+		
+		UFUNCTION(BlueprintCallable)
+		void CheckKeys();
 };
