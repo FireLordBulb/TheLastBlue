@@ -51,6 +51,12 @@ class UInteraction : public UActorComponent
 	protected:
 		UInteraction();
 		virtual void BeginPlay() override;
+
+		UPROPERTY(BlueprintReadOnly, EditAnywhere)
+		bool IsInteractable = true;
+
+		UPROPERTY(BlueprintReadOnly, EditAnywhere)
+		bool IsPuzzle = false;
 	
 		UPROPERTY(BlueprintReadOnly, EditAnywhere)
 		bool CanPointToSpirit = true;
@@ -71,7 +77,7 @@ class UInteraction : public UActorComponent
 		UPROPERTY(EditDefaultsOnly)
 		TSubclassOf<UUserWidget> SpawnWidget;
 
-		UPROPERTY(EditDefaultsOnly)
+		UPROPERTY(EditAnywhere)
 		float ZOffset = 100.f;
 
 		UPROPERTY(BlueprintAssignable)

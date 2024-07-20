@@ -13,10 +13,18 @@ class GP3_TEAM09_API UInteractionWidget : public UUserWidget
 public:
 	virtual void NativeConstruct() override;
 	void DisableSpiritImage();
+	void DisableInteractionImage();
+	void ChangeInteractionIcon(bool IsPuzzle);
 
 protected:
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	UTexture2D* PuzzleImage;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	UTexture2D* MuralImage;
+	
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget))
-	UImage* SpiritInteractionImage;
+	UImage* InteractionImage;
 
 	UPROPERTY(BlueprintReadWrite, meta = (BindWidget))
 	UImage* SpiritTalkImage;

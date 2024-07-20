@@ -85,7 +85,16 @@ void UInteraction::BeginPlay()
 		InstanceSpawnWidget->SetCollisionResponseToChannel(ECC_Visibility, ECR_Ignore);
 		if (InstanceSpawnWidget->GetWidget()->IsA<UInteractionWidget>() && !CanPointToSpirit)
 		{
-			Cast<UInteractionWidget>(InstanceSpawnWidget->GetWidget())->DisableSpiritImage();
+			UInteractionWidget* Widget = Cast<UInteractionWidget>(InstanceSpawnWidget->GetWidget());
+			Widget->ChangeInteractionIcon(IsPuzzle);
+			if (!IsInteractable)
+			{
+				Widget->DisableInteractionImage();
+			}
+			if (!CanPointToSpirit)
+			{
+				Widget->DisableSpiritImage();
+			}
 		}
 	}
 	TArray<AActor*> Spirits;
