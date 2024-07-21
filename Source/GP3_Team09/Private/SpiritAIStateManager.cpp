@@ -75,7 +75,7 @@ void USpiritAIStateManager::SetMovementSpeed(ESpiritMovementSpeed NewSpeed)
 			switch (CurrentMovementSpeed)
 			{
 			case ESpiritMovementSpeed::Slow:
-				CharacterMovement->MaxWalkSpeed = 150.f;
+				CharacterMovement->MaxWalkSpeed = 250.f;
 				break;
 			case ESpiritMovementSpeed::Normal:
 				CharacterMovement->MaxWalkSpeed = 300.f;
