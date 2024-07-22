@@ -3,6 +3,7 @@
 #include "BehaviorTree/BlackboardComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/Character.h"
+#include "Navigation/PathFollowingComponent.h"
 
 UBTTask_MoveToFrontOfPlayer::UBTTask_MoveToFrontOfPlayer() : UBTTask_BlackboardBase()
 {
