@@ -83,7 +83,7 @@ void UInteraction::BeginPlay()
 		InstanceSpawnWidget->SetWidgetSpace(EWidgetSpace::Screen);
 		// PAIN AND SUFFERING
 		InstanceSpawnWidget->SetCollisionResponseToChannel(ECC_Visibility, ECR_Ignore);
-		if (InstanceSpawnWidget->GetWidget()->IsA<UInteractionWidget>() && !CanPointToSpirit)
+		if (InstanceSpawnWidget->GetWidget()->IsA<UInteractionWidget>())
 		{
 			UInteractionWidget* Widget = Cast<UInteractionWidget>(InstanceSpawnWidget->GetWidget());
 			Widget->ChangeInteractionIcon(IsPuzzle);

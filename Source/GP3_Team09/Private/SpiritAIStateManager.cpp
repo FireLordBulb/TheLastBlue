@@ -19,10 +19,7 @@ void USpiritAIStateManager::ChangeState(ESpiritState NewState)
 				UBlackboardComponent* Blackboard = Controller->GetBlackboardComponent();
 				if(Blackboard)
 				{
-					if (CurrentState == ESpiritState::Talk || CurrentState == ESpiritState::ShowGlyph)
-					{
-						Spirit->DisableGlyph();
-					}
+					Spirit->DisableGlyph();
 					PreviousState = CurrentState;
 					CurrentState = NewState;
 					Blackboard->SetValueAsEnum("State", static_cast<uint8>(NewState));
