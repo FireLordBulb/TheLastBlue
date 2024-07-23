@@ -11,21 +11,16 @@ UBTTask_SetSpiritState::UBTTask_SetSpiritState() : UBTTask_BlackboardBase()
 
 EBTNodeResult::Type UBTTask_SetSpiritState::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
-	// get the blackboard component
-	if (auto* const Blackboard = OwnerComp.GetBlackboardComponent())
+	ASpiritPawn* Spirit = Cast<ASpiritPawn>(UGameplayStatics::GetActorOfClass(GetWorld(), ASpiritPawn::StaticClass()));
+	if (Spirit)
 	{
-		ASpiritPawn* Spirit = Cast<ASpiritPawn>(UGameplayStatics::GetActorOfClass(GetWorld(), ASpiritPawn::StaticClass()));
-		if (Spirit)
+		ASpiritAIController* Controller = Cast<ASpiritAIController>(Spirit->GetController());
+		if(Controller)
 		{
-			ASpiritAIController* Controller = Cast<ASpiritAIController>(Spirit->GetController());
-			if(Controller)
-			{
-				Controller->SetAIState(State);
-			}
+			Controller->SetAIState(State);
+			FinishLatentTask(OwnerComp, EBTNodeResult::Succeeded);
+			return EBTNodeResult::Succeeded;
 		}
-		Blackboard->SetValueAsEnum("State", static_cast<uint8>(State));
-		FinishLatentTask(OwnerComp, EBTNodeResult::Succeeded);
-		return EBTNodeResult::Succeeded;
 	}
 	return EBTNodeResult::Failed;
 }
