@@ -71,10 +71,15 @@ void ASpiritPawn::ShowGlyph()
 {
 	if (DialogueElement != nullptr)
 	{
-		if (DialogueElement->IsVisible())
-			DialogueElement->DisableGlyph();
-		else
-			DialogueElement->EnableGlyph();
+		DialogueElement->EnableGlyph();
+	}
+}
+
+void ASpiritPawn::DisableGlyph()
+{
+	if (DialogueElement != nullptr)
+	{
+		DialogueElement->DisableGlyph();
 	}
 }
 

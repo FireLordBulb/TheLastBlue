@@ -36,6 +36,9 @@ public:
 	UFUNCTION()
 	void ShowGlyph();
 
+	UFUNCTION()
+	void DisableGlyph();
+
 	UFUNCTION(BlueprintCallable)
 	void ChangeGlyph(FPlainSentence Sentence);
 	
